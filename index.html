@@ -1,591 +1,576 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>МИРоКИТ | Культурно-игровой триатлон</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>МИРОКИТ — Культурно-игровой триатлон</title>
+  <style>
+    /* Сброс и базовые стили */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+      background-color: #f9f7f5;
+      color: #1e2a3a;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    /* Шапка */
+    .header {
+      background: linear-gradient(135deg, #2b4a6e 0%, #1d3557 100%);
+      color: white;
+      padding: 50px 0 40px;
+      text-align: center;
+      border-bottom: 5px solid #f4a261;
+    }
+    .header h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .header .subtitle {
+      font-size: 1.5rem;
+      margin-top: 10px;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+    .header .date-place {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      background: rgba(255,255,255,0.15);
+      display: inline-block;
+      padding: 8px 30px;
+      border-radius: 40px;
+      backdrop-filter: blur(4px);
+    }
 
-<style>
+    /* Навигация */
+    .nav {
+      background: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #e9e3dc;
+    }
+    .nav-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px 40px;
+      list-style: none;
+    }
+    .nav-list a {
+      color: #1d3557;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+    .nav-list a:hover {
+      border-bottom-color: #f4a261;
+      color: #e76f51;
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Montserrat',sans-serif;
-}
+    /* Секции */
+    section {
+      padding: 70px 0;
+      border-bottom: 1px solid #e9e3dc;
+    }
+    section:last-of-type {
+      border-bottom: none;
+    }
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: #1d3557;
+      margin-bottom: 30px;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+    .section-title span {
+      background: #f4a26120;
+      padding: 0 15px;
+      border-radius: 30px;
+    }
 
-body{
-background:#f8fafc;
-color:#1e293b;
-line-height:1.6;
-}
+    /* Карточки, сетки */
+    .grid-2, .grid-3 {
+      display: grid;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 32px 26px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      transition: 0.25s ease;
+      border: 1px solid #f0ebe6;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+    }
+    .card h3 {
+      color: #2b4a6e;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .card ul, .card p {
+      color: #2d3e56;
+      font-size: 1.05rem;
+    }
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .card ul li {
+      padding: 8px 0 8px 28px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%23f4a261" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') left center no-repeat;
+      background-size: 18px;
+    }
 
-.container{
-width:90%;
-max-width:1200px;
-margin:auto;
-}
+    /* Блок авторов — УВЕЛИЧЕННЫЙ */
+    .authors-section {
+      background: linear-gradient(180deg, #f9f7f5 0%, #eef3f7 100%);
+    }
+    .author-block {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px 50px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .author-item {
+      background: white;
+      border-radius: 30px;
+      padding: 30px 30px 25px;
+      text-align: center;
+      width: 260px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      border: 1px solid #e9e3dc;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .author-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.10);
+    }
+    .author-photo {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: #d3dcec;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      color: #2b4a6e;
+      font-weight: 500;
+      overflow: hidden;
+      border: 5px solid #f4a26160;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: border-color 0.3s;
+    }
+    .author-item:hover .author-photo {
+      border-color: #f4a261;
+    }
+    .author-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .author-name {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #1d3557;
+      margin-bottom: 4px;
+    }
+    .author-role {
+      font-size: 0.95rem;
+      color: #5f738c;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+    .author-org {
+      font-size: 0.85rem;
+      color: #8a9bb0;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+    .author-social {
+      margin-top: 12px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    .author-social a {
+      color: #2b4a6e;
+      text-decoration: none;
+      font-size: 1.2rem;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .author-social a:hover {
+      opacity: 1;
+    }
 
-header{
-position:fixed;
-width:100%;
-top:0;
-left:0;
-background:rgba(255,255,255,0.95);
-backdrop-filter:blur(12px);
-z-index:1000;
-box-shadow:0 2px 15px rgba(0,0,0,0.05);
-}
+    /* Особенности */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+    }
+    .feature-item {
+      background: white;
+      border-radius: 20px;
+      padding: 22px 18px;
+      text-align: center;
+      border: 1px solid #f0ebe6;
+      font-weight: 500;
+      color: #1d3557;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
 
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 0;
-}
+    /* Результаты */
+    .result-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .result-item {
+      background: #ffffffd9;
+      backdrop-filter: blur(2px);
+      padding: 24px 20px;
+      border-radius: 30px;
+      border-left: 6px solid #f4a261;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      font-weight: 500;
+      color: #1d3557;
+    }
 
-.logo{
-font-size:28px;
-font-weight:800;
-color:#2563eb;
-}
+    /* Контакты */
+    .contact-block {
+      background: #eef3f7;
+      border-radius: 40px;
+      padding: 35px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 25px;
+      gap: 20px;
+    }
+    .contact-block a {
+      color: #1d3557;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #f4a261;
+      padding-bottom: 2px;
+    }
+    .contact-block a:hover {
+      color: #e76f51;
+    }
+    .contact-telegram {
+      background: #1d3557;
+      color: white !important;
+      padding: 10px 28px !important;
+      border-radius: 40px;
+      border-bottom: none !important;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .contact-telegram:hover {
+      background: #2b4a6e !important;
+      color: white !important;
+    }
 
-.menu{
-display:flex;
-gap:30px;
-}
+    /* Подвал */
+    .footer {
+      background: #1d3557;
+      color: #cddcec;
+      padding: 40px 0;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .footer small {
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
 
-.menu a{
-text-decoration:none;
-color:#334155;
-font-weight:500;
-transition:0.3s;
-}
-
-.menu a:hover{
-color:#2563eb;
-}
-
-.hero{
-min-height:100vh;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;
-align-items:center;
-color:white;
-padding-top:80px;
-}
-
-.hero-content{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-align-items:center;
-}
-
-.hero h1{
-font-size:70px;
-font-weight:800;
-line-height:1;
-margin-bottom:20px;
-}
-
-.hero h2{
-font-size:24px;
-font-weight:400;
-margin-bottom:30px;
-}
-
-.hero p{
-font-size:18px;
-margin-bottom:40px;
-opacity:.95;
-}
-
-.btn{
-display:inline-block;
-padding:16px 34px;
-background:white;
-color:#2563eb;
-border-radius:50px;
-font-weight:700;
-text-decoration:none;
-transition:0.3s;
-}
-
-.btn:hover{
-transform:translateY(-3px);
-}
-
-.hero-card{
-background:rgba(255,255,255,.15);
-padding:40px;
-border-radius:25px;
-backdrop-filter:blur(20px);
-}
-
-.hero-card h3{
-font-size:30px;
-margin-bottom:15px;
-}
-
-.section{
-padding:100px 0;
-}
-
-.section-title{
-text-align:center;
-font-size:42px;
-font-weight:800;
-margin-bottom:60px;
-}
-
-.about{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:30px;
-}
-
-.card{
-background:white;
-padding:35px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.06);
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-}
-
-.card h3{
-margin-bottom:15px;
-color:#2563eb;
-}
-
-.mission{
-background:white;
-}
-
-.mission-content{
-max-width:900px;
-margin:auto;
-text-align:center;
-font-size:20px;
-}
-
-.goals{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.goal{
-background:white;
-padding:30px;
-border-radius:20px;
-box-shadow:0 5px 20px rgba(0,0,0,.05);
-}
-
-.goal h4{
-margin-bottom:10px;
-color:#7c3aed;
-}
-
-.structure{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:30px;
-}
-
-.structure-box{
-background:white;
-padding:35px;
-border-radius:20px;
-box-shadow:0 5px 25px rgba(0,0,0,.05);
-}
-
-.structure-box h3{
-margin-bottom:20px;
-color:#2563eb;
-}
-
-.structure-box ul{
-padding-left:20px;
-}
-
-.structure-box li{
-margin-bottom:10px;
-}
-
-.stats{
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-color:white;
-}
-
-.stats-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-}
-
-.stat{
-text-align:center;
-padding:30px;
-}
-
-.stat h3{
-font-size:48px;
-margin-bottom:10px;
-}
-
-.leader{
-display:flex;
-gap:50px;
-align-items:center;
-background:white;
-padding:50px;
-border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.05);
-}
-
-.avatar{
-width:180px;
-height:180px;
-border-radius:50%;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-}
-
-footer{
-background:#0f172a;
-color:white;
-padding:60px 0;
-text-align:center;
-}
-
-footer h3{
-margin-bottom:20px;
-}
-
-@media(max-width:900px){
-
-.hero-content,
-.structure,
-.about,
-.leader{
-grid-template-columns:1fr;
-display:grid;
-}
-
-.hero h1{
-font-size:50px;
-}
-
-.menu{
-display:none;
-}
-
-}
-
-</style>
+    /* Адаптив */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2.8rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .nav-list {
+        gap: 10px 20px;
+      }
+      .author-item {
+        width: 100%;
+        max-width: 320px;
+      }
+      .author-photo {
+        width: 140px;
+        height: 140px;
+      }
+      .contact-block {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 2.2rem;
+      }
+      .author-photo {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<header>
-<div class="container">
-<nav>
-<div class="logo">МИРоКИТ</div>
-
-<div class="menu">
-<a href="#about">О проекте</a>
-<a href="#goals">Цели</a>
-<a href="#structure">Программа</a>
-<a href="#leader">Руководитель</a>
-<a href="#contacts">Контакты</a>
-</div>
-</nav>
-</div>
-</header>
-
-<section class="hero">
-
-<div class="container">
-
-<div class="hero-content">
-
-<div>
-
-<h1>МИРоКИТ</h1>
-
-<h2>Культурно-игровой триатлон</h2>
-
-<p>
-Международный проект для молодежи,
-объединяющий участников разных стран через
-диалог, творчество и интеллектуальные игры.
-</p>
-
-<a href="#about" class="btn">Узнать больше</a>
-
-</div>
-
-<div class="hero-card">
-
-<h3>11–18 апреля 2026</h3>
-
-<p>
-Инновационный формат культурного взаимодействия
-и международного сотрудничества молодежи.
-</p>
-
-<p>
-📍 Екатеринбург
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section" id="about">
-
-<div class="container">
-
-<h2 class="section-title">О проекте</h2>
-
-<div class="about">
-
-<div class="card">
-<h3>Диалог</h3>
-<p>
-Создаем пространство для общения,
-обмена опытом и укрепления доверия
-между молодыми людьми разных стран.
-</p>
-</div>
-
-<div class="card">
-<h3>Творчество</h3>
-<p>
-Искусство становится универсальным языком,
-помогающим понимать друг друга.
-</p>
-</div>
-
-<div class="card">
-<h3>Интеллектуальные игры</h3>
-<p>
-Шахматы, нарды, шашки и командные
-соревнования развивают мышление и стратегию.
-</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section mission">
-
-<div class="container">
-
-<h2 class="section-title">
-Почему нужен МИРоКИТ?
-</h2>
-
-<div class="mission-content">
-
-Сегодня молодежь сталкивается с ростом
-культурной изоляции и недостатком живого
-международного общения.
-
-МИРоКИТ создает пространство,
-где важны уважение, сотрудничество,
-доверие и понимание разных культур.
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section" id="goals">
-
-<div class="container">
-
-<h2 class="section-title">Цели проекта</h2>
-
-<div class="goals">
-
-<div class="goal">
-<h4>Доверие</h4>
-<p>Укрепление доверия между молодежью разных стран.</p>
-</div>
-
-<div class="goal">
-<h4>Коммуникация</h4>
-<p>Развитие межкультурного общения.</p>
-</div>
-
-<div class="goal">
-<h4>Мир и уважение</h4>
-<p>Продвижение ценностей мира и взаимопонимания.</p>
-</div>
-
-<div class="goal">
-<h4>Творчество</h4>
-<p>Раскрытие талантов и потенциала молодежи.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section" id="structure">
-
-<div class="container">
-
-<h2 class="section-title">Структура триатлона</h2>
-
-<div class="structure">
-
-<div class="structure-box">
-<h3>Коммуникация</h3>
-<ul>
-<li>Дебаты</li>
-<li>Эссе</li>
-<li>Мини-проекты</li>
-<li>Международные дискуссии</li>
-</ul>
-</div>
-
-<div class="structure-box">
-<h3>Интеллектуальные игры</h3>
-<ul>
-<li>Шахматы</li>
-<li>Шашки</li>
-<li>Нарды</li>
-<li>Турнир «Шахматы для всех»</li>
-</ul>
-</div>
-
-<div class="structure-box">
-<h3>Творчество</h3>
-<ul>
-<li>Музыка</li>
-<li>Ремесла</li>
-<li>Легенды и сказания</li>
-<li>Мини-спектакли</li>
-</ul>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section stats">
-
-<div class="container">
-
-<h2 class="section-title">Результаты проекта</h2>
-
-<div class="stats-grid">
-
-<div class="stat">
-<h3>🌍</h3>
-<p>Новый международный формат общения</p>
-</div>
-
-<div class="stat">
-<h3>🤝</h3>
-<p>Рост доверия между странами</p>
-</div>
-
-<div class="stat">
-<h3>🎨</h3>
-<p>Развитие творческого потенциала</p>
-</div>
-
-<div class="stat">
-<h3>🚀</h3>
-<p>Международная молодежная лига</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section" id="leader">
-
-<div class="container">
-
-<h2 class="section-title">
-Руководитель проекта
-</h2>
-
-<div class="leader">
-
-<div class="avatar"></div>
-
-<div>
-
-<h3>
-Орлова Инна Александровна
-</h3>
-
-<br>
-
-<p>
-Международный эксперт по вопросам
-социального развития, организатор
-социальных проектов для детей,
-молодежи и семьи.
-</p>
-
-<br>
-
-<p>
-Автор и разработчик проекта МИРоКИТ.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<footer id="contacts">
-
-<div class="container">
-
-<h3>Контакты</h3>
-
-<p>📧 erlebeninitiative@mail.ru</p>
-<p>📞 +49 178 7257687</p>
-
-<br>
-
-<p>
-© 2026 МИРоКИТ. Все права защищены.
-</p>
-
-</div>
-
-</footer>
-
+  <header class="header">
+    <div class="container">
+      <h1>МИРОКИТ</h1>
+      <div class="subtitle">Культурно-игровой триатлон</div>
+      <div class="date-place">11–18 апреля 2026 · Екатеринбург</div>
+      <div style="margin-top: 20px; font-size: 1.1rem; opacity: 0.9;">
+        <span style="background: #f4a26130; padding: 4px 18px; border-radius: 40px;">🌍 диалог · творчество · интеллект</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="#about">О проекте</a></li>
+        <li><a href="#structure">Структура</a></li>
+        <li><a href="#features">Особенности</a></li>
+        <li><a href="#results">Результаты</a></li>
+        <li><a href="#authors">Авторы</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- О проекте -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title"><span>🌱 Зачем МИРОКИТ?</span></h2>
+        <div style="max-width: 800px; margin: 0 auto 30px; font-size: 1.2rem; text-align: center; color: #2d4059;">
+          <p>Сегодня молодёжь сталкивается с ростом культурной изоляции, недоверием между странами и нехваткой живого межкультурного общения.</p>
+        </div>
+        <div style="background: #eef3f7; border-radius: 40px; padding: 35px 30px; text-align: center;">
+          <p style="font-size: 1.4rem; font-weight: 500; color: #1d3557;">МИРОКИТ создаёт пространство для диалога, где важны <strong>уважение, сотрудничество, понимание разных культур</strong>.</p>
+        </div>
+        <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+          <div style="background: white; border-radius: 30px; padding: 20px 30px; border: 1px solid #f0ebe6; flex: 1 1 200px; text-align: center;">
+            <span style="font-weight: 700; color: #2b4a6e; font-size: 1.1rem;">🎯 Цель</span><br>
+            Укрепление доверия между молодёжью разных стран
+          </div>
+          <div style="background: white; border-radius: 30px; padding: 20px 30px; border: 1px solid #f0ebe6; flex: 1 1 200px; text-align: center;">
+            <span style="font-weight: 700; color: #2b4a6e; font-size: 1.1rem;">❤️ Воспитание</span><br>
+            Уважения и любви к своей стране
+          </div>
+          <div style="background: white; border-radius: 30px; padding: 20px 30px; border: 1px solid #f0ebe6; flex: 1 1 200px; text-align: center;">
+            <span style="font-weight: 700; color: #2b4a6e; font-size: 1.1rem;">🤝 Продвижение</span><br>
+            Ценностей мира и уважения
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Структура -->
+    <section id="structure" style="background: #fcfaf8;">
+      <div class="container">
+        <h2 class="section-title"><span>🏛️ Структура игры</span></h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3>1. Коммуникация</h3>
+            <ul>
+              <li>Дебаты</li>
+              <li>Эссе</li>
+              <li>Мини-проекты</li>
+              <li>Международные онлайн-дискуссии</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>2. Интеллектуальные игры</h3>
+            <ul>
+              <li>Шахматы</li>
+              <li>Шашки</li>
+              <li>Нарды</li>
+              <li>Турнир «Шахматы для всех»</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>3. Творчество</h3>
+            <ul>
+              <li>Легенды и сказания</li>
+              <li>Рисунки и ремёсла</li>
+              <li>Музыка и мини-спектакли</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: 25px; text-align: center; background: #fff; border-radius: 40px; padding: 20px 24px; border: 1px solid #e9e3dc;">
+          <span style="font-weight: 600; color: #2b4a6e; font-size: 1.1rem;">🌐 Игра объединяет молодёжь 12–25 лет через диалог, творчество, интеллект и совместное решение задач.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Особенности -->
+    <section id="features">
+      <div class="container">
+        <h2 class="section-title"><span>⚙️ Особенности игры</span></h2>
+        <div class="feature-grid">
+          <div class="feature-item">🧩 Модульная система <br><span style="font-weight: 400; font-size: 0.95rem; color: #4a5f7a;">как конструктор</span></div>
+          <div class="feature-item">🌍 Проводится на любом языке</div>
+          <div class="feature-item">🌐 Команды из разных стран онлайн</div>
+          <div class="feature-item">👥 Игровая модель профессий: <br>лидер, аналитик, медиатор, дизайнер</div>
+          <div class="feature-item">🧠 Развивает мышление, коммуникацию, командную работу</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Результаты -->
+    <section id="results" style="background: #fcfaf8;">
+      <div class="container">
+        <h2 class="section-title"><span>📈 Результаты проекта</span></h2>
+        <div class="result-list">
+          <div class="result-item">🎨 Развитие творческого потенциала подростков и молодёжи</div>
+          <div class="result-item">🤝 Новый международный формат общения и сотрудничества</div>
+          <div class="result-item">🌱 Рост доверия и взаимопонимания между странами</div>
+          <div class="result-item">🏅 Формирование Международной молодёжной лиги МИРОКИТ</div>
+          <div class="result-item">🇷🇺 Поддержка народной дипломатии, образ России как великой державы</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- АВТОРЫ — УВЕЛИЧЕННЫЕ ФОТО -->
+    <section id="authors" class="authors-section">
+      <div class="container">
+        <h2 class="section-title"><span>✍️ Авторы проекта</span></h2>
+        <div class="author-block">
+          <!-- Инна Орлова -->
+          <div class="author-item">
+            <div class="author-photo">
+              <img src="images/orlova.jpg" alt="Инна Орлова" onerror="this.style.display='none'; this.parentElement.innerHTML='👤'" style="display: block;">
+            </div>
+            <div class="author-name">Орлова Инна Александровна</div>
+            <div class="author-role">Международный эксперт</div>
+            <div class="author-org">Социальный технолог</div>
+            <div class="author-social">
+              <a href="#" title="Telegram">📱</a>
+              <a href="mailto:erlebeninitiative@mail.ru" title="Email">✉️</a>
+            </div>
+          </div>
+
+          <!-- Дильманн А.Э. -->
+          <div class="author-item">
+            <div class="author-photo">
+              <img src="images/dilmann.jpg" alt="А.Э. Дильманн" onerror="this.style.display='none'; this.parentElement.innerHTML='👤'" style="display: block;">
+            </div>
+            <div class="author-name">Дильманн А. Э.</div>
+            <div class="author-role">Соавтор методических указаний</div>
+            <div class="author-org">Initiative erLeben e.V.</div>
+            <div class="author-social">
+              <a href="#" title="Telegram">📱</a>
+              <a href="#" title="Email">✉️</a>
+            </div>
+          </div>
+
+          <!-- Хиб Е.Е. -->
+          <div class="author-item">
+            <div class="author-photo">
+              <img src="images/hieb.jpg" alt="Е.Е. Хиб" onerror="this.style.display='none'; this.parentElement.innerHTML='👤'" style="display: block;">
+            </div>
+            <div class="author-name">Хиб Е. Е.</div>
+            <div class="author-role">Соавтор методических указаний</div>
+            <div class="author-org">Initiative erLeben e.V.</div>
+            <div class="author-social">
+              <a href="#" title="Telegram">📱</a>
+              <a href="#" title="Email">✉️</a>
+            </div>
+          </div>
+
+          <!-- Новук Е.В. -->
+          <div class="author-item">
+            <div class="author-photo">
+              <img src="images/novuk.jpg" alt="Е.В. Новук" onerror="this.style.display='none'; this.parentElement.innerHTML='👤'" style="display: block;">
+            </div>
+            <div class="author-name">Новук Е. В.</div>
+            <div class="author-role">Разработчик игры</div>
+            <div class="author-org">АНО «Центр Вдохновение»</div>
+            <div class="author-social">
+              <a href="#" title="Telegram">📱</a>
+              <a href="#" title="Email">✉️</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 35px; background: white; border-radius: 40px; padding: 18px 24px; border: 1px solid #e9e3dc; max-width: 800px; margin-left: auto; margin-right: auto;">
+          <span style="font-weight: 500;">📘 Авторы методических указаний: Дильманн А. Э., Орлова И. А., Хиб Е. Е.</span><br>
+          <span style="font-size: 0.95rem; color: #2d4059;">Разработчики игры: Дильманн А. Э., Орлова И. А., Хиб Е. Е., Новик Е. В.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" style="background: #fcfaf8;">
+      <div class="container">
+        <h2 class="section-title"><span>📬 Контакты</span></h2>
+        <div class="contact-block">
+          <div>
+            <strong style="font-size: 1.1rem;">Орлова Инна Александровна</strong><br>
+            <a href="tel:+491787257687">+49 178 7257687</a><br>
+            <a href="mailto:erlebeninitiative@mail.ru">erlebeninitiative@mail.ru</a>
+          </div>
+          <div style="text-align: center;">
+            <strong style="font-size: 1.1rem;">🇷🇺 Лига МИРОКИТ</strong><br>
+            <a href="https://t.me/ligamirokit" target="_blank" class="contact-telegram">📱 Подписаться в Telegram</a>
+          </div>
+        </div>
+        <div style="margin-top: 25px; text-align: center; background: white; border-radius: 40px; padding: 20px; border: 1px solid #e9e3dc;">
+          <span style="font-weight: 500; font-size: 1.05rem;">🌐 Следите за новостями и присоединяйтесь к Международной молодёжной лиге МИРОКИТ!</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p style="font-size: 1.3rem; font-weight: 300; letter-spacing: 1px;">МИРОКИТ · Культурно-игровой триатлон</p>
+      <small>Екатеринбург, 11–18 апреля 2026 · Все права защищены</small><br>
+      <small style="opacity: 0.6;">© 2026 Орлова И.А., Дильманн А.Э., Хиб Е.Е., Новик Е.В.</small>
+    </div>
+  </footer>
 </body>
 </html>
