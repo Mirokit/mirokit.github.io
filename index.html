@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>МИРОКИТ — Культурно-игровой триатлон</title>
   <style>
-    /* Сброс и базовые стили */
     * {
       margin: 0;
       padding: 0;
@@ -23,37 +22,35 @@
       padding: 0 20px;
     }
 
-    /* Шапка */
     .header {
       background: linear-gradient(135deg, #2b4a6e 0%, #1d3557 100%);
       color: white;
-      padding: 50px 0 40px;
+      padding: 55px 0 45px;
       text-align: center;
       border-bottom: 5px solid #f4a261;
     }
     .header h1 {
-      font-size: 4rem;
+      font-size: 4.2rem;
       font-weight: 700;
-      letter-spacing: 3px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      letter-spacing: 4px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
     }
     .header .subtitle {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       margin-top: 10px;
       opacity: 0.9;
       font-weight: 300;
     }
-    .header .date-place {
-      margin-top: 15px;
-      font-size: 1.2rem;
-      background: rgba(255,255,255,0.15);
+    .header .tagline {
+      margin-top: 18px;
+      font-size: 1.15rem;
+      background: rgba(255,255,255,0.12);
       display: inline-block;
-      padding: 8px 30px;
+      padding: 8px 35px;
       border-radius: 40px;
       backdrop-filter: blur(4px);
     }
 
-    /* Навигация */
     .nav {
       background: white;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -84,7 +81,6 @@
       color: #e76f51;
     }
 
-    /* Секции */
     section {
       padding: 70px 0;
       border-bottom: 1px solid #e9e3dc;
@@ -106,17 +102,11 @@
       border-radius: 30px;
     }
 
-    /* Карточки, сетки */
-    .grid-2, .grid-3 {
+    .grid-3 {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 30px;
       margin-top: 20px;
-    }
-    .grid-2 {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-    .grid-3 {
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
     .card {
       background: white;
@@ -136,13 +126,11 @@
       margin-bottom: 12px;
       font-weight: 600;
     }
-    .card ul, .card p {
-      color: #2d3e56;
-      font-size: 1.05rem;
-    }
     .card ul {
       list-style: none;
       padding-left: 0;
+      color: #2d3e56;
+      font-size: 1.05rem;
     }
     .card ul li {
       padding: 8px 0 8px 28px;
@@ -150,7 +138,6 @@
       background-size: 18px;
     }
 
-    /* Блок авторов — УВЕЛИЧЕННЫЙ */
     .authors-section {
       background: linear-gradient(180deg, #f9f7f5 0%, #eef3f7 100%);
     }
@@ -186,7 +173,6 @@
       justify-content: center;
       font-size: 3.5rem;
       color: #2b4a6e;
-      font-weight: 500;
       overflow: hidden;
       border: 5px solid #f4a26160;
       box-shadow: 0 8px 20px rgba(0,0,0,0.08);
@@ -209,7 +195,6 @@
     .author-role {
       font-size: 0.95rem;
       color: #5f738c;
-      margin-top: 4px;
       line-height: 1.4;
     }
     .author-org {
@@ -235,7 +220,6 @@
       opacity: 1;
     }
 
-    /* Особенности */
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -253,7 +237,6 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.02);
     }
 
-    /* Результаты */
     .result-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -262,7 +245,6 @@
     }
     .result-item {
       background: #ffffffd9;
-      backdrop-filter: blur(2px);
       padding: 24px 20px;
       border-radius: 30px;
       border-left: 6px solid #f4a261;
@@ -271,7 +253,6 @@
       color: #1d3557;
     }
 
-    /* Контакты */
     .contact-block {
       background: #eef3f7;
       border-radius: 40px;
@@ -307,7 +288,6 @@
       color: white !important;
     }
 
-    /* Подвал */
     .footer {
       background: #1d3557;
       color: #cddcec;
@@ -320,7 +300,6 @@
       font-size: 0.95rem;
     }
 
-    /* Адаптив */
     @media (max-width: 768px) {
       .header h1 {
         font-size: 2.8rem;
@@ -360,10 +339,7 @@
     <div class="container">
       <h1>МИРОКИТ</h1>
       <div class="subtitle">Культурно-игровой триатлон</div>
-      <div class="date-place">11–18 апреля 2026 · Екатеринбург</div>
-      <div style="margin-top: 20px; font-size: 1.1rem; opacity: 0.9;">
-        <span style="background: #f4a26130; padding: 4px 18px; border-radius: 40px;">🌍 диалог · творчество · интеллект</span>
-      </div>
+      <div class="tagline">🌍 диалог · творчество · интеллект</div>
     </div>
   </header>
 
@@ -381,7 +357,6 @@
   </nav>
 
   <main>
-    <!-- О проекте -->
     <section id="about">
       <div class="container">
         <h2 class="section-title"><span>🌱 Зачем МИРОКИТ?</span></h2>
@@ -408,7 +383,6 @@
       </div>
     </section>
 
-    <!-- Структура -->
     <section id="structure" style="background: #fcfaf8;">
       <div class="container">
         <h2 class="section-title"><span>🏛️ Структура игры</span></h2>
@@ -446,7 +420,6 @@
       </div>
     </section>
 
-    <!-- Особенности -->
     <section id="features">
       <div class="container">
         <h2 class="section-title"><span>⚙️ Особенности игры</span></h2>
@@ -460,7 +433,6 @@
       </div>
     </section>
 
-    <!-- Результаты -->
     <section id="results" style="background: #fcfaf8;">
       <div class="container">
         <h2 class="section-title"><span>📈 Результаты проекта</span></h2>
@@ -469,20 +441,18 @@
           <div class="result-item">🤝 Новый международный формат общения и сотрудничества</div>
           <div class="result-item">🌱 Рост доверия и взаимопонимания между странами</div>
           <div class="result-item">🏅 Формирование Международной молодёжной лиги МИРОКИТ</div>
-          <div class="result-item">🇷🇺 Поддержка народной дипломатии, образ России как великой державы</div>
+          <div class="result-item">🇷🇺 Поддержка народной дипломатии, формирование образа России как великой мировой державы</div>
         </div>
       </div>
     </section>
 
-    <!-- АВТОРЫ — УВЕЛИЧЕННЫЕ ФОТО -->
     <section id="authors" class="authors-section">
       <div class="container">
         <h2 class="section-title"><span>✍️ Авторы проекта</span></h2>
         <div class="author-block">
-          <!-- Инна Орлова -->
           <div class="author-item">
             <div class="author-photo">
-              <img src="images/orlova.jpg" alt="Инна Орлова" onerror="this.style.display='none'; this.parentElement.innerHTML='👤'" style="display: block;">
+              <img src="images/orlova.jpg" alt="Инна Орлова" onerror="this.style.display='none'; this.parentElement.innerHTML='👤'">
             </div>
             <div class="author-name">Орлова Инна Александровна</div>
             <div class="author-role">Международный эксперт</div>
@@ -493,10 +463,9 @@
             </div>
           </div>
 
-          <!-- Дильманн А.Э. -->
           <div class="author-item">
             <div class="author-photo">
-              <img src="images/dilmann.jpg" alt="А.Э. Дильманн" onerror="this.style.display='none'; this.parentElement.innerHTML='👤'" style="display: block;">
+              <img src="images/dilmann.jpg" alt="А.Э. Дильманн" onerror="this.style.display='none'; this.parentElement.innerHTML='👤'">
             </div>
             <div class="author-name">Дильманн А. Э.</div>
             <div class="author-role">Соавтор методических указаний</div>
@@ -507,10 +476,9 @@
             </div>
           </div>
 
-          <!-- Хиб Е.Е. -->
           <div class="author-item">
             <div class="author-photo">
-              <img src="images/hieb.jpg" alt="Е.Е. Хиб" onerror="this.style.display='none'; this.parentElement.innerHTML='👤'" style="display: block;">
+              <img src="images/hieb.jpg" alt="Е.Е. Хиб" onerror="this.style.display='none'; this.parentElement.innerHTML='👤'">
             </div>
             <div class="author-name">Хиб Е. Е.</div>
             <div class="author-role">Соавтор методических указаний</div>
@@ -521,14 +489,14 @@
             </div>
           </div>
 
-          <!-- Новук Е.В. -->
+          <!-- НОВИК (исправлено) -->
           <div class="author-item">
             <div class="author-photo">
-              <img src="images/novuk.jpg" alt="Е.В. Новук" onerror="this.style.display='none'; this.parentElement.innerHTML='👤'" style="display: block;">
+              <img src="images/novik.jpg" alt="Е.В. Новик" onerror="this.style.display='none'; this.parentElement.innerHTML='👤'">
             </div>
-            <div class="author-name">Новук Е. В.</div>
+            <div class="author-name">Новик Е. В.</div>
             <div class="author-role">Разработчик игры</div>
-            <div class="author-org">АНО «Центр Вдохновение»</div>
+            <div class="author-org">АНО «Центр организации творческих инициатив «Вдохновение»</div>
             <div class="author-social">
               <a href="#" title="Telegram">📱</a>
               <a href="#" title="Email">✉️</a>
@@ -543,7 +511,6 @@
       </div>
     </section>
 
-    <!-- Контакты -->
     <section id="contact" style="background: #fcfaf8;">
       <div class="container">
         <h2 class="section-title"><span>📬 Контакты</span></h2>
@@ -568,8 +535,8 @@
   <footer class="footer">
     <div class="container">
       <p style="font-size: 1.3rem; font-weight: 300; letter-spacing: 1px;">МИРОКИТ · Культурно-игровой триатлон</p>
-      <small>Екатеринбург, 11–18 апреля 2026 · Все права защищены</small><br>
-      <small style="opacity: 0.6;">© 2026 Орлова И.А., Дильманн А.Э., Хиб Е.Е., Новик Е.В.</small>
+      <small>Все права защищены</small><br>
+      <small style="opacity: 0.6;">© Орлова И.А., Дильманн А.Э., Хиб Е.Е., Новик Е.В.</small>
     </div>
   </footer>
 </body>
